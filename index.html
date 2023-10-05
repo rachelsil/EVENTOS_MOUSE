@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<style>
+div
+{
+background:black;
+width:500px;
+height:500px;
+color:white;
+text-align:center;
+}
+#demo_p
+{
+padding-top:200px;
+font-size:20px;
+}
+</style>
+<body>
+<h3>MUEVE EL MOUSE, HAZ CLIC Y JUEGO CON EL DIV NEGRO.</h3>
+<div id="demo" onmousedown="mouseDown()" onmouseup="mouseUp()">
+<p id="demo_p"></p>
+</div>
+
+<script>
+div = document.getElementById('demo');
+mouse_event="empty";
+demo_p = document.getElementById('demo_p');
+
+div.addEventListener("mousedown", function (e) 
+{
+	div.style.background = "red";
+    mouse_event="clicked";
+    demo_p.innerHTML = "BAJAR EL MOUSE, mousedown";
+});
+
+div.addEventListener("mousemove", function (e) 
+{
+	div.style.background = "green";
+    demo_p.innerHTML = "MOVER EL MOUSE, mousemove";
+    
+    if(mouse_event == "clicked")
+    {
+    	demo_p.innerHTML = "BAJAR EL MOUSE + MOVER EL MOUSE";
+		div.style.background = "yellow";
+    }
+});
+
+div.addEventListener("mouseup", function (e) 
+{
+	div.style.background = "blue";
+    mouse_event="mouseUp";
+    demo_p.innerHTML = "ALZAR EL MOUSE, mouseup";
+});
+
+div.addEventListener("mouseleave", function (e) 
+{
+	div.style.background = "grey";
+    mouse_event="mouseDown";
+    demo_p.innerHTML = "RETIRAR EL MOUSE, mouseleave";
+});
+
+</script>
+
+</body>
+</html>
+
